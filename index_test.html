@@ -11,7 +11,7 @@
         }
         
         .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #2C3E50 0%, #4FB0A6 100%);
         }
         
         .feature-card {
@@ -43,15 +43,15 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center space-x-2">
-                    <div class="w-8 h-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
+                    <div class="w-8 h-8 bg-gradient-to-r from-[#2C3E50] to-[#4FB0A6] rounded-lg flex items-center justify-center">
                         <span class="text-white font-bold text-sm">ELM</span>
                     </div>
                     <span class="text-xl font-bold text-gray-900">Every Last Mile</span>
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#features" class="text-gray-600 hover:text-purple-600 transition-colors">Features</a>
-                    <a href="#how-it-works" class="text-gray-600 hover:text-purple-600 transition-colors">How It Works</a>
-                    <a href="#download" class="text-gray-600 hover:text-purple-600 transition-colors">Download</a>
+                    <a href="#features" class="text-[#8E8D89] hover:text-[#4FB0A6] transition-colors">Features</a>
+                    <a href="#how-it-works" class="text-[#8E8D89] hover:text-[#4FB0A6] transition-colors">How It Works</a>
+                    <a href="#download" class="text-[#8E8D89] hover:text-[#4FB0A6] transition-colors">Download</a>
                 </div>
                 <button class="md:hidden p-2">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -69,16 +69,16 @@
                 <div class="text-white">
                     <h1 class="text-5xl lg:text-6xl font-bold leading-tight mb-6">
                         Track Every Mile, 
-                        <span class="text-yellow-300">Maximize</span> Your Deductions
+                        <span class="text-[#F4B860]">Maximize</span> Your Deductions
                     </h1>
-                    <p class="text-xl text-purple-100 mb-8 leading-relaxed">
-                        Built for self-employed professionals who need accurate, effortless mileage tracking. Save an average of $6,000 per year in tax deductions with IRS-compliant reporting. <span class="text-yellow-300 font-semibold">Free to download and use.</span>
+                    <p class="text-xl text-[#FAF7F2]/90 mb-8 leading-relaxed">
+                        Built for self-employed professionals who need accurate, effortless mileage tracking. Save an average of $6,000 per year in tax deductions with IRS-compliant reporting. <span class="text-[#F4B860] font-semibold">Free to download and use.</span>
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <button onclick="scrollToSection('download')" class="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors shadow-lg">
+                        <button onclick="scrollToSection('download')" class="bg-[#FAF7F2] text-[#2C3E50] px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#DAD7CD] transition-colors shadow-lg">
                             Download Free
                         </button>
-                        <button onclick="scrollToSection('features')" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-purple-600 transition-colors">
+                        <button onclick="scrollToSection('features')" class="border-2 border-[#FAF7F2] text-[#FAF7F2] px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#FAF7F2] hover:text-[#2C3E50] transition-colors">
                             Learn More
                         </button>
                     </div>
@@ -88,17 +88,17 @@
                         <div class="bg-white rounded-2xl p-6 shadow-lg">
                             <div class="flex items-center justify-between mb-4">
                                 <h3 class="text-lg font-semibold text-gray-800">Today's Business Route</h3>
-                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Tracking</span>
+                                <span class="bg-[#BFD8B8] text-[#2C3E50] px-3 py-1 rounded-full text-sm font-medium">Tracking</span>
                             </div>
                             
                             <!-- Map Display -->
-                            <div class="bg-gray-100 rounded-xl h-48 mb-4 relative overflow-hidden">
+                            <div class="bg-[#DAD7CD] rounded-xl h-48 mb-4 relative overflow-hidden">
                                 <svg viewBox="0 0 300 200" class="w-full h-full">
                                     <!-- Map Background -->
                                     <defs>
                                         <pattern id="mapGrid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                                            <rect width="20" height="20" fill="#f8fafc"/>
-                                            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e2e8f0" stroke-width="0.5"/>
+                                            <rect width="20" height="20" fill="#FAF7F2"/>
+                                            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#DAD7CD" stroke-width="0.5"/>
                                         </pattern>
                                     </defs>
                                     
@@ -106,57 +106,57 @@
                                     <rect width="300" height="200" fill="url(#mapGrid)"/>
                                     
                                     <!-- Parks/Green Areas -->
-                                    <rect x="10" y="10" width="60" height="40" fill="#dcfce7" rx="4"/>
-                                    <rect x="200" y="140" width="80" height="50" fill="#dcfce7" rx="4"/>
+                                    <rect x="10" y="10" width="60" height="40" fill="#BFD8B8" rx="4"/>
+                                    <rect x="200" y="140" width="80" height="50" fill="#BFD8B8" rx="4"/>
                                     
                                     <!-- Water Bodies -->
-                                    <ellipse cx="250" cy="40" rx="30" ry="15" fill="#dbeafe"/>
+                                    <ellipse cx="250" cy="40" rx="30" ry="15" fill="#4FB0A6"/>
                                     
                                     <!-- Buildings/Blocks -->
-                                    <rect x="90" y="30" width="40" height="25" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
-                                    <rect x="160" y="35" width="35" height="20" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
-                                    <rect x="100" y="140" width="30" height="30" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
-                                    <rect x="170" y="150" width="25" height="20" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+                                    <rect x="90" y="30" width="40" height="25" fill="#FAF7F2" stroke="#8E8D89" stroke-width="1"/>
+                                    <rect x="160" y="35" width="35" height="20" fill="#FAF7F2" stroke="#8E8D89" stroke-width="1"/>
+                                    <rect x="100" y="140" width="30" height="30" fill="#FAF7F2" stroke="#8E8D89" stroke-width="1"/>
+                                    <rect x="170" y="150" width="25" height="20" fill="#FAF7F2" stroke="#8E8D89" stroke-width="1"/>
                                     
                                     <!-- Major Streets -->
-                                    <line x1="0" y1="60" x2="300" y2="60" stroke="#9ca3af" stroke-width="3"/>
-                                    <line x1="0" y1="120" x2="300" y2="120" stroke="#9ca3af" stroke-width="3"/>
-                                    <line x1="80" y1="0" x2="80" y2="200" stroke="#9ca3af" stroke-width="3"/>
-                                    <line x1="150" y1="0" x2="150" y2="200" stroke="#9ca3af" stroke-width="3"/>
-                                    <line x1="220" y1="0" x2="220" y2="200" stroke="#9ca3af" stroke-width="3"/>
+                                    <line x1="0" y1="60" x2="300" y2="60" stroke="#8E8D89" stroke-width="3"/>
+                                    <line x1="0" y1="120" x2="300" y2="120" stroke="#8E8D89" stroke-width="3"/>
+                                    <line x1="80" y1="0" x2="80" y2="200" stroke="#8E8D89" stroke-width="3"/>
+                                    <line x1="150" y1="0" x2="150" y2="200" stroke="#8E8D89" stroke-width="3"/>
+                                    <line x1="220" y1="0" x2="220" y2="200" stroke="#8E8D89" stroke-width="3"/>
                                     
                                     <!-- Minor Streets -->
-                                    <line x1="0" y1="90" x2="300" y2="90" stroke="#d1d5db" stroke-width="1.5"/>
-                                    <line x1="40" y1="0" x2="40" y2="200" stroke="#d1d5db" stroke-width="1.5"/>
-                                    <line x1="110" y1="0" x2="110" y2="200" stroke="#d1d5db" stroke-width="1.5"/>
-                                    <line x1="185" y1="0" x2="185" y2="200" stroke="#d1d5db" stroke-width="1.5"/>
-                                    <line x1="260" y1="0" x2="260" y2="200" stroke="#d1d5db" stroke-width="1.5"/>
+                                    <line x1="0" y1="90" x2="300" y2="90" stroke="#DAD7CD" stroke-width="1.5"/>
+                                    <line x1="40" y1="0" x2="40" y2="200" stroke="#DAD7CD" stroke-width="1.5"/>
+                                    <line x1="110" y1="0" x2="110" y2="200" stroke="#DAD7CD" stroke-width="1.5"/>
+                                    <line x1="185" y1="0" x2="185" y2="200" stroke="#DAD7CD" stroke-width="1.5"/>
+                                    <line x1="260" y1="0" x2="260" y2="200" stroke="#DAD7CD" stroke-width="1.5"/>
                                     
                                     <!-- Route Path with shadow -->
                                     <path d="M 40 60 L 80 60 L 80 120 L 150 120 L 150 80 L 220 80 L 220 120 L 260 120" 
-                                          stroke="#000000" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.2"/>
+                                          stroke="#2B2B2B" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.2"/>
                                     <path d="M 40 60 L 80 60 L 80 120 L 150 120 L 150 80 L 220 80 L 220 120 L 260 120" 
-                                          stroke="#7c3aed" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                          stroke="#E27D60" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                                     
                                     <!-- Start Point -->
-                                    <circle cx="40" cy="60" r="8" fill="#ffffff" stroke="#10b981" stroke-width="3"/>
-                                    <circle cx="40" cy="60" r="4" fill="#10b981"/>
-                                    <text x="40" y="45" text-anchor="middle" class="text-xs font-medium" fill="#374151">Home</text>
+                                    <circle cx="40" cy="60" r="8" fill="#FAF7F2" stroke="#BFD8B8" stroke-width="3"/>
+                                    <circle cx="40" cy="60" r="4" fill="#BFD8B8"/>
+                                    <text x="40" y="45" text-anchor="middle" class="text-xs font-medium" fill="#2B2B2B">Home</text>
                                     
                                     <!-- Stop Points -->
-                                    <circle cx="80" cy="120" r="6" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
-                                    <circle cx="80" cy="120" r="3" fill="#f59e0b"/>
+                                    <circle cx="80" cy="120" r="6" fill="#FAF7F2" stroke="#F4B860" stroke-width="2"/>
+                                    <circle cx="80" cy="120" r="3" fill="#F4B860"/>
                                     
-                                    <circle cx="150" cy="80" r="6" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
-                                    <circle cx="150" cy="80" r="3" fill="#f59e0b"/>
+                                    <circle cx="150" cy="80" r="6" fill="#FAF7F2" stroke="#F4B860" stroke-width="2"/>
+                                    <circle cx="150" cy="80" r="3" fill="#F4B860"/>
                                     
-                                    <circle cx="220" cy="120" r="6" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
-                                    <circle cx="220" cy="120" r="3" fill="#f59e0b"/>
+                                    <circle cx="220" cy="120" r="6" fill="#FAF7F2" stroke="#F4B860" stroke-width="2"/>
+                                    <circle cx="220" cy="120" r="3" fill="#F4B860"/>
                                     
                                     <!-- End Point -->
-                                    <circle cx="260" cy="120" r="8" fill="#ffffff" stroke="#ef4444" stroke-width="3"/>
-                                    <circle cx="260" cy="120" r="4" fill="#ef4444"/>
-                                    <text x="260" y="140" text-anchor="middle" class="text-xs font-medium" fill="#374151">Office</text>
+                                    <circle cx="260" cy="120" r="8" fill="#FAF7F2" stroke="#E27D60" stroke-width="3"/>
+                                    <circle cx="260" cy="120" r="4" fill="#E27D60"/>
+                                    <text x="260" y="140" text-anchor="middle" class="text-xs font-medium" fill="#2B2B2B">Office</text>
                                 </svg>
                             </div>
                             
@@ -167,15 +167,15 @@
                                 </div>
                                 <div class="flex justify-between">
                                     <span class="text-gray-600">Estimated Deduction</span>
-                                    <span class="font-semibold text-green-600">$30.68</span>
+                                    <span class="font-semibold text-[#BFD8B8]">$30.68</span>
                                 </div>
                                 <div class="flex justify-between">
                                     <span class="text-gray-600">Client Visits</span>
                                     <span class="font-semibold text-gray-900">3 stops</span>
                                 </div>
                             </div>
-                            <div class="mt-4 p-3 bg-blue-50 rounded-lg">
-                                <div class="text-sm text-blue-800 font-medium">This Month: $847 saved</div>
+                            <div class="mt-4 p-3 bg-[#F4B860]/20 rounded-lg">
+                                <div class="text-sm text-[#2C3E50] font-medium">This Month: $847 saved</div>
                             </div>
                         </div>
                     </div>
@@ -436,5 +436,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98b7d61817932f2f',t:'MTc1OTk0OTU1Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98b7d93e606a2f2f',t:'MTc1OTk0OTY4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
