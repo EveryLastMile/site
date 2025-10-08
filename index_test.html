@@ -1,271 +1,370 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Every Last Mile – Landing Page (High Fidelity + Motion)</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Every Last Mile - Track Every Step of Your Journey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      :root {
-        --warm-navy: #2C3E50;
-        --dusty-teal: #4FB0A6;
-        --ivory-white: #FAF7F2;
-        --golden-apricot: #F4B860;
-        --terracotta-coral: #E27D60;
-        --sage-green: #BFD8B8;
-        --mushroom-gray: #DAD7CD;
-        --stone-taupe: #8E8D89;
-        --charcoal-ink: #2B2B2A;
-      }
-
-      html, body { margin: 0; padding: 0; background: var(--ivory-white); color: var(--warm-navy); font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
-
-      /* Utility */
-      .container { padding: 0 10%; }
-      .btn { display: inline-block; padding: 0.9rem 1.6rem; border-radius: 999px; font-weight: 700; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
-      .btn-primary { background: var(--golden-apricot); color: #fff; box-shadow: 0 6px 14px rgba(244,184,96,.35); }
-      .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(244,184,96,.45); background: var(--terracotta-coral); }
-      .btn-ghost { color: var(--warm-navy); border: 1px solid rgba(44,62,80,.15); background: rgba(255,255,255,.6); }
-      .btn-ghost:hover { transform: translateY(-2px); border-color: var(--dusty-teal); color: var(--dusty-teal); }
-
-      /* Header */
-      header { position: sticky; top: 0; background: rgba(250,247,242,.85); backdrop-filter: saturate(120%) blur(10px); z-index: 20; }
-      .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-      .brand { font-weight: 800; letter-spacing: .2px; }
-      .links a { margin: 0 1rem; text-decoration: none; color: var(--warm-navy); font-weight: 500; position: relative; }
-      .links a:after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; background: linear-gradient(90deg, var(--dusty-teal), var(--golden-apricot)); transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
-      .links a:hover:after { transform: scaleX(1); }
-
-      /* Hero */
-      .hero { position: relative; overflow: hidden; }
-      .hero-bg { position: absolute; inset: 0; background: radial-gradient(1200px 600px at 10% 10%, rgba(79,176,166,.18), transparent 60%), radial-gradient(900px 500px at 90% 30%, rgba(244,184,96,.25), transparent 60%), linear-gradient(120deg, var(--ivory-white) 0%, var(--ivory-white) 55%, rgba(191,216,184,.6) 55%, rgba(191,216,184,.85) 100%); }
-      .hero-inner { position: relative; display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: center; padding: 6rem 0; }
-      .hero h1 { font-size: clamp(2.2rem, 3.6vw, 3.4rem); line-height: 1.12; margin: 0 0 1rem 0; }
-      .hero p { font-size: 1.2rem; color: var(--stone-taupe); margin: 0 0 2rem 0; }
-
-      /* Animated device mock */
-      .device { height: 520px; border-radius: 28px; background: linear-gradient(145deg, #3c9d92, var(--charcoal-ink)); box-shadow: 0 18px 42px rgba(0,0,0,.25); padding: 24px; display: grid; place-items: center; position: relative; }
-      .device:before { content: ""; position: absolute; inset: -2px; border-radius: 30px; background: linear-gradient(120deg, rgba(79,176,166,.6), rgba(244,184,96,.6)); filter: blur(18px); opacity: .35; z-index: -1; }
-      .route { width: 92%; height: 86%; border-radius: 22px; background: #0e1f24; position: relative; overflow: hidden; }
-      .route svg { position: absolute; inset: 0; }
-      .pulse { position: absolute; width: 18px; height: 18px; border-radius: 50%; background: var(--golden-apricot); box-shadow: 0 0 0 0 rgba(244,184,96,.8); animation: pulse 2.2s infinite; }
-
-      @keyframes dash { to { stroke-dashoffset: 0; } }
-      @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(244,184,96,.8);} 70% { box-shadow: 0 0 0 24px rgba(244,184,96,0);} 100% { box-shadow: 0 0 0 0 rgba(244,184,96,0);} }
-
-      /* Benefits */
-      section { padding: 5rem 0; }
-      h2.section-title { text-align: center; font-size: 2rem; margin: 0 0 2rem 0; }
-      .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
-      .card { background: #fff; border-radius: 20px; padding: 1.8rem; box-shadow: 0 8px 18px rgba(0,0,0,.06); transform: translateY(14px); opacity: 0; transition: transform .6s cubic-bezier(.2,.8,.2,1), opacity .6s ease; }
-      .card.reveal { transform: translateY(0); opacity: 1; }
-      .card h3 { margin-top: 0; color: var(--terracotta-coral); }
-      .card p { color: var(--stone-taupe); }
-      .badge { display: inline-block; font-size: .75rem; padding: .3rem .6rem; background: rgba(79,176,166,.12); color: var(--dusty-teal); border-radius: 999px; margin-bottom: .6rem; }
-
-      /* CTA band */
-      .cta-band { background: linear-gradient(90deg, var(--warm-navy), var(--dusty-teal)); color: #fff; text-align: center; padding: 4.5rem 0; position: relative; overflow: hidden; }
-      .cta-band .shine { position: absolute; top: -20%; left: -20%; width: 60%; height: 200%; background: radial-gradient(closest-side, rgba(255,255,255,.25), transparent 60%); transform: rotate(25deg); animation: sway 9s ease-in-out infinite; }
-      @keyframes sway { 0%,100% { transform: translateX(0) rotate(25deg);} 50% { transform: translateX(40%) rotate(25deg);} }
-
-      /* Footer */
-      footer { background: var(--warm-navy); color: var(--ivory-white); padding: 3rem 0; }
-      .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
-      footer h4 { color: var(--golden-apricot); margin: 0 0 1rem 0; }
-      footer a { color: var(--mushroom-gray); text-decoration: none; margin-bottom: .4rem; display: inline-block; }
-      footer a:hover { color: var(--dusty-teal); }
-
-      /* Counters */
-      .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin: 2rem 0 0 0; }
-      .kpi { background: #fff; border-radius: 16px; padding: 1.2rem; box-shadow: 0 6px 14px rgba(0,0,0,.06); text-align: center; opacity: 0; transform: translateY(10px); transition: .6s ease; }
-      .kpi.reveal { opacity: 1; transform: translateY(0); }
-      .kpi .num { font-size: 2rem; font-weight: 800; color: var(--dusty-teal); }
-      .kpi .label { color: var(--stone-taupe); font-size: .95rem; }
-
-      /* Reveal animations for reduced motion */
-      @media (prefers-reduced-motion: reduce) {
-        .card, .kpi, .btn, .links a:after, .shine, .pulse { animation: none !important; transition: none !important; }
-      }
-
-      /* Responsive */
-      @media (max-width: 980px) {
-        .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
-        .cards { grid-template-columns: 1fr; }
-        .kpis { grid-template-columns: 1fr; }
-        .footer-grid { grid-template-columns: 1fr 1fr; }
-      }
+        body {
+            box-sizing: border-box;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .hero-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
     </style>
-  </head>
-  <body>
-    <header>
-      <div class="container nav">
-        <div class="brand">Every Last Mile</div>
-        <nav class="links">
-          <a href="#features">Features</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#how">How It Works</a>
-          <a href="#support">Support</a>
-        </nav>
-        <a href="#signup" class="btn btn-primary">Start Free Trial</a>
-      </div>
-    </header>
-
-    <section class="hero">
-      <div class="hero-bg"></div>
-      <div class="container hero-inner">
-        <div>
-          <h1>Automatic mileage tracking that works when you don’t.</h1>
-          <p>Effortless, IRS compliant tracking for freelancers, teams, and businesses. Privacy first with on device processing and iCloud backup.</p>
-          <div>
-            <a href="#signup" class="btn btn-primary">Start Free Trial</a>
-            <a href="#how" class="btn btn-ghost" style="margin-left:.6rem">See How It Works</a>
-          </div>
-
-          <div class="kpis">
-            <div class="kpi"><div class="num" data-target="12000">0</div><div class="label">drivers using ELM</div></div>
-            <div class="kpi"><div class="num" data-target="24">0</div><div class="label">hours saved per year</div></div>
-            <div class="kpi"><div class="num" data-target="2400">0</div><div class="label">average annual tax savings ($)</div></div>
-          </div>
+</head>
+<body class="scroll-smooth">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">ELM</span>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900">Every Last Mile</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#features" class="text-gray-600 hover:text-purple-600 transition-colors">Features</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-purple-600 transition-colors">How It Works</a>
+                    <a href="#download" class="text-gray-600 hover:text-purple-600 transition-colors">Download</a>
+                </div>
+                <button class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
         </div>
-        <div class="device" aria-label="Animated route demo">
-          <div class="route">
-            <!-- Simple animated path to simulate a drive -->
-            <svg viewBox="0 0 600 520" preserveAspectRatio="xMidYMid meet">
-              <defs>
-                <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stop-color="#4FB0A6"/>
-                  <stop offset="100%" stop-color="#F4B860"/>
-                </linearGradient>
-                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-                  <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
-              </defs>
-              <path id="drive" d="M60,460 C120,420 180,420 230,380 C300,330 300,250 360,230 C420,210 470,250 520,180" stroke="url(#grad)" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" filter="url(#glow)"></path>
-            </svg>
-            <div class="pulse" id="pulse" style="left: 56px; top: 456px;"></div>
-          </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg min-h-full pt-20 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
+                <div class="text-white">
+                    <h1 class="text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        Track Every Mile, 
+                        <span class="text-yellow-300">Maximize</span> Your Deductions
+                    </h1>
+                    <p class="text-xl text-purple-100 mb-8 leading-relaxed">
+                        Built for self-employed professionals who need accurate, effortless mileage tracking. Save an average of $6,000 per year in tax deductions with IRS-compliant reporting.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="scrollToSection('download')" class="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors shadow-lg">
+                            Download Now
+                        </button>
+                        <button onclick="scrollToSection('features')" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-purple-600 transition-colors">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-animation">
+                    <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 shadow-2xl">
+                        <div class="bg-white rounded-2xl p-6 shadow-lg">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-gray-800">Today's Business Miles</h3>
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Tracking</span>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Business Miles</span>
+                                    <span class="font-semibold text-gray-900">47.2 miles</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Estimated Deduction</span>
+                                    <span class="font-semibold text-green-600">$30.68</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Trips Logged</span>
+                                    <span class="font-semibold text-gray-900">3 business</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 p-3 bg-blue-50 rounded-lg">
+                                <div class="text-sm text-blue-800 font-medium">This Month: $847 saved</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section id="features">
-      <div class="container">
-        <h2 class="section-title">Built to make every mile count.</h2>
-        <div class="cards">
-          <div class="card">
-            <span class="badge">Automatic</span>
-            <h3>Automatic Detection</h3>
-            <p>Tracks drives silently in the background. No start or stop buttons. Optimized for low battery impact.</p>
-          </div>
-          <div class="card">
-            <span class="badge">Smart</span>
-            <h3>Smart Classification</h3>
-            <p>Auto labels trips based on routine and places. Swipe once to confirm. Edit details instantly.</p>
-          </div>
-          <div class="card">
-            <span class="badge">Compliance</span>
-            <h3>Audit Ready Reports</h3>
-            <p>Generate IRS compliant PDF and CSV with timestamps, routes, and purpose notes that hold up under audit.</p>
-          </div>
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Built for Self-Employed Professionals</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Effortless mileage tracking with IRS-compliant reporting. Designed for real estate agents, consultants, contractors, and freelancers who value privacy and simplicity.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Simple Start/Stop Tracking</h3>
+                    <p class="text-gray-600">
+                        One-tap to start logging your business trips. Live Activity shows tracking status right on your lock screen for peace of mind.
+                    </p>
+                </div>
+
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">IRS-Compliant Reports</h3>
+                    <p class="text-gray-600">
+                        Generate detailed PDF reports with business purpose notes. Export via AirDrop or email - everything stored securely on your device.
+                    </p>
+                </div>
+
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Smart Trip Classification</h3>
+                    <p class="text-gray-600">
+                        Quickly classify trips as business or personal. Add business purpose notes for complete IRS compliance with batch review features.
+                    </p>
+                </div>
+
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Money-Saving Insights</h3>
+                    <p class="text-gray-600">
+                        Track your estimated tax deductions in real-time. See weekly trends and get alerts for unclassified trips so you never miss money.
+                    </p>
+                </div>
+
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Privacy First</h3>
+                    <p class="text-gray-600">
+                        All trip data stored locally on your device with secure iCloud backup. No third-party tracking or data sharing - your location stays private.
+                    </p>
+                </div>
+
+                <div class="feature-card bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Delightful Simplicity</h3>
+                    <p class="text-gray-600">
+                        Designed for humans, not accountants. Earn badges and streaks while building good tracking habits that save you money.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section class="cta-band" id="cta">
-      <div class="shine"></div>
-      <div class="container" style="position:relative; z-index:1;">
-        <h2 style="margin:0 0 1rem 0; font-size:2rem;">Start capturing every mile today.</h2>
-        <p style="margin:0 0 1.6rem 0; opacity:.95;">Automatic. Private. Effortless.</p>
-        <a href="#signup" class="btn btn-primary">Get Started Free</a>
-      </div>
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">How It Works</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Start maximizing your tax deductions in three simple steps. No complex setup or confusing features.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white text-2xl font-bold">1</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Download & Setup</h3>
+                    <p class="text-gray-600">
+                        Download from the App Store and grant location permissions. Set up your vehicles and you're ready to start saving money.
+                    </p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white text-2xl font-bold">2</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Track Your Trips</h3>
+                    <p class="text-gray-600">
+                        Tap "Start Trip" before driving to clients. Live Activity shows tracking status on your lock screen for peace of mind.
+                    </p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white text-2xl font-bold">3</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Classify & Export</h3>
+                    <p class="text-gray-600">
+                        Review trips, mark as business or personal, add purpose notes, then export IRS-compliant reports for tax time.
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <footer>
-      <div class="container footer-grid">
-        <div>
-          <h4>Product</h4>
-          <a href="#features">Features</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#faq">FAQ</a>
+    <!-- Download Section -->
+    <section id="download" class="py-20 gradient-bg">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold text-white mb-6">Ready to Start Saving Money?</h2>
+            <p class="text-xl text-purple-100 mb-12 max-w-2xl mx-auto">
+                Join thousands of self-employed professionals who trust Every Last Mile to maximize their tax deductions. Stop leaving money on the table.
+            </p>
+            
+            <div class="flex justify-center">
+                <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" class="bg-black text-white px-8 py-4 rounded-2xl flex items-center space-x-3 hover:bg-gray-800 transition-colors">
+                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    </svg>
+                    <div class="text-left">
+                        <div class="text-xs">Download on the</div>
+                        <div class="text-lg font-semibold">App Store</div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="mt-12 text-purple-200">
+                <p class="mb-4">💰 Average user saves $6,000 per year in tax deductions</p>
+                <p class="mb-2">"Finally, a mileage app that actually works and respects my privacy!" - Jennifer R., Real Estate Agent</p>
+                <p>"Saved me hours during tax season. The reports are perfect for my accountant." - Mike T., Contractor</p>
+            </div>
         </div>
-        <div>
-          <h4>Company</h4>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-          <a href="#careers">Careers</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-sm">ELM</span>
+                        </div>
+                        <span class="text-xl font-bold">Every Last Mile</span>
+                    </div>
+                    <p class="text-gray-400">
+                        Track every step of your journey with precision and style.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Product</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#features" class="hover:text-white transition-colors">Features</a></li>
+                        <li><a href="#how-it-works" class="hover:text-white transition-colors">How It Works</a></li>
+                        <li><a href="#download" class="hover:text-white transition-colors">Download</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Every Last Mile. All rights reserved.</p>
+            </div>
         </div>
-        <div>
-          <h4>Legal</h4>
-          <a href="#privacy">Privacy</a>
-          <a href="#terms">Terms</a>
-        </div>
-        <div>
-          <h4>Connect</h4>
-          <a href="#linkedin">LinkedIn</a>
-          <a href="#x">X</a>
-          <a href="#instagram">Instagram</a>
-        </div>
-      </div>
     </footer>
 
     <script>
-      // Animate the SVG route drawing
-      const path = document.getElementById('drive');
-      const pulseEl = document.getElementById('pulse');
-      const length = 800; // matches stroke-dasharray
-      function animatePath() {
-        path.style.animation = 'dash 4.5s ease forwards';
-        // Move the pulse along the path using getPointAtLength
-        let start = null;
-        function step(ts) {
-          if (!start) start = ts;
-          const progress = Math.min((ts - start) / 4500, 1);
-          const p = path.getPointAtLength(length * progress);
-          pulseEl.style.left = (p.x - 9) + 'px';
-          pulseEl.style.top = (p.y - 9) + 'px';
-          if (progress < 1) requestAnimationFrame(step);
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
         }
-        requestAnimationFrame(step);
-      }
 
-      // Intersection Observer for reveal animations
-      const io = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('reveal');
-            io.unobserve(e.target);
-          }
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
-      }, { threshold: 0.18 });
 
-      document.querySelectorAll('.card').forEach(el => io.observe(el));
-
-      // KPI counters
-      const counterIo = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            const numEl = e.target.querySelector('.num');
-            const target = parseInt(numEl.getAttribute('data-target'), 10);
-            const start = 0; const duration = 1400; const startTime = performance.now();
-            const step = (now) => {
-              const p = Math.min((now - startTime) / duration, 1);
-              const val = Math.floor(start + (target - start) * p);
-              numEl.textContent = val.toLocaleString();
-              if (p < 1) requestAnimationFrame(step);
-            };
-            requestAnimationFrame(step);
-            e.target.classList.add('reveal');
-            counterIo.unobserve(e.target);
-          }
+        // Add navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-white/95');
+                nav.classList.remove('bg-white/90');
+            } else {
+                nav.classList.add('bg-white/90');
+                nav.classList.remove('bg-white/95');
+            }
         });
-      }, { threshold: 0.35 });
-      document.querySelectorAll('.kpi').forEach(el => counterIo.observe(el));
-
-      // Fire hero animation after load
-      window.addEventListener('load', () => setTimeout(animatePath, 350));
     </script>
-  </body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98b7bfedf6708400',t:'MTc1OTk0ODY0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
